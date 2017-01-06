@@ -55,14 +55,6 @@ variable "compute_labels" {
 #
 ## AWS PROVIDER
 #
-#variable "aws_shared_credentials_file" {
-#  description = "The file containing the AWS credentials"
-#  default     = "/root/.aws/credentials"
-#}
-#variable "aws_profile" {
-#  description = "The AWS profile to use from within the credentials file"
-#  default     = "terraform-bug"
-#}
 variable "aws_region" {
   description = "The AWS Region we are building the cluster in"
 }
@@ -134,7 +126,6 @@ variable "compute_docker_volume_type" {
 variable "compute_docker_volume" {
   description = "The size of the /var/lib/docker partition for the compute nodes"
 }
-
 
 #
 ## MISC RELATED ##
