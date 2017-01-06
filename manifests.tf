@@ -22,7 +22,7 @@ data "gotemplate_file" "kube_proxy" {
 ## S3 Object
 resource "aws_s3_bucket_object" "kube_proxy" {
   bucket     = "${var.secrets_bucket_name}"
-  key        = "manifests/compute/${var.name}/kube-proxy.yml"
+  key        = "manifests/compute/${var.compute_name}/kube-proxy.yml"
   content    = "${data.gotemplate_file.kube_proxy.rendered}"
   kms_key_id = "arn:aws:kms:${var.aws_region}:${data.aws_caller_identity.caller.account_id}:key/${var.kms_master_id}"
 }
