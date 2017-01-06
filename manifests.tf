@@ -12,7 +12,7 @@ data "gotemplate_file" "kube_proxy" {
   vars = {
     aws_region               = "${var.aws_region}"
     kmsctl_image             = "${var.kmsctl_image}"
-    kubeapi_dns_name         = "${var.kubeapi_dns}.${var.private_zone_name}"
+    kubeapi_dns_name         = "${var.kubeapi_dns}"
     kubernetes_image         = "${var.kubernetes_image}"
     name                     = "${var.compute_name}"
     secrets_bucket_name      = "${var.secrets_bucket_name}"
