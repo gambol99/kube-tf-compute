@@ -21,7 +21,6 @@ variable "coreos_image" {
 }
 variable "coreos_image_owner" {
   description = "The owner of the AMI to use, used by the filter"
-  default     = "595879546273"
 }
 variable "key_name" {
   description = "The name of the AWS ssh keypair to use for the boxes"
@@ -50,6 +49,9 @@ variable "enable_calico" {
 variable "compute_labels" {
   description = "A map of keypairs which are added as node labels to the compute nodes"
   type        = "map"
+}
+variable "compute_name" {
+  description = "An arbitary name for this compute cluster"
 }
 
 #
