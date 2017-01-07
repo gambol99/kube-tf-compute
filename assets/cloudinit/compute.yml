@@ -225,7 +225,7 @@ write_files:
         - --sync=true
         - --sync-interval=1m
         - --recursive=true
-        - manifests/compute/{{ .name }}
+        - manifests/compute/{{ .compute_name }}
         volumeMounts:
         - name: manifests
           mountPath: /etc/kubernetes/manifests

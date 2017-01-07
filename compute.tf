@@ -14,6 +14,7 @@ data "gotemplate_file" "compute_user_data" {
 
   vars = {
     aws_region             = "${var.aws_region}"
+    compute_name           = "${var.compute_name}"
     enable_calico          = "${var.enable_calico}"
     environment            = "${var.environment}"
     flannel_memberlist     = "${var.flannel_memberlist}"
@@ -88,6 +89,12 @@ resource "aws_autoscaling_group" "compute" {
   tag {
     key                 = "Role"
     value               = "compute"
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = "Group"
+    value               = "${var.compute_name}"
     propagate_at_launch = true
   }
 

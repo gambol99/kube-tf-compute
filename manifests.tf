@@ -10,12 +10,11 @@
 data "gotemplate_file" "kube_proxy" {
   template = "${file("${path.module}/assets/manifests/kube-proxy.yml")}"
   vars = {
-    aws_region               = "${var.aws_region}"
-    kmsctl_image             = "${var.kmsctl_image}"
-    kubeapi_dns_name         = "${var.kubeapi_dns}"
-    kubernetes_image         = "${var.kubernetes_image}"
-    name                     = "${var.compute_name}"
-    secrets_bucket_name      = "${var.secrets_bucket_name}"
+    aws_region          = "${var.aws_region}"
+    kmsctl_image        = "${var.kmsctl_image}"
+    kubeapi_dns         = "${var.kubeapi_dns}"
+    kubernetes_image    = "${var.kubernetes_image}"
+    secrets_bucket_name = "${var.secrets_bucket_name}"
   }
 }
 

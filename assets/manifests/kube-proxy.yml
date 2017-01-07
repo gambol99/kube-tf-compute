@@ -33,7 +33,7 @@ spec:
     - proxy
     - --kubeconfig=/etc/secrets/kubeconfig_proxy
     - --logtostderr=true
-    - --master={{ .kubeapi_dns_name }}
+    - --master={{ .kubeapi_dns }}
     - --proxy-mode=iptables
     securityContext:
       privileged: true
