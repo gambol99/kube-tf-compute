@@ -70,7 +70,7 @@ resource "aws_autoscaling_group" "compute" {
   launch_configuration      = "${aws_launch_configuration.compute.name}"
   max_size                  = "${var.compute_asg_max}"
   min_size                  = "${var.compute_asg_min}"
-  name                      = "${var.environment}-compute-asg"
+  name                      = "${var.environment}-compute-asg-${var.compute_name}"
   termination_policies      = [ "OldestInstance", "Default" ]
   vpc_zone_identifier       = [ "${var.compute_subnets}" ]
 
