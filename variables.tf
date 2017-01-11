@@ -52,6 +52,7 @@ variable "compute_labels" {
 }
 variable "compute_name" {
   description = "An arbitary name for this compute cluster"
+  default     = "default"
 }
 
 #

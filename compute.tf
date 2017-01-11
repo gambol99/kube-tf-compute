@@ -39,7 +39,7 @@ resource "aws_launch_configuration" "compute" {
   image_id                    = "${data.aws_ami.coreos.id}"
   instance_type               = "${var.compute_flavor}"
   key_name                    = "${var.key_name}"
-  name_prefix                 = "${var.environment}-compute-"
+  name_prefix                 = "${var.environment}-compute-${var.compute_name}-"
   security_groups             = [ "${var.compute_sg}" ]
   user_data                   = "${data.gotemplate_file.compute_user_data.rendered}"
 
@@ -76,7 +76,7 @@ resource "aws_autoscaling_group" "compute" {
 
   tag {
     key                 = "Name"
-    value               = "${var.environment}-compute"
+    value               = "${var.environment}-compute-${var.compute_name}"
     propagate_at_launch = true
   }
 

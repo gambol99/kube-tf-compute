@@ -4,8 +4,7 @@
 
 ## Compute IAM Role
 resource "aws_iam_role" "compute" {
-  name               = "${var.environment}-compute-role"
-  path               = "/"
+  name               = "${var.environment}compute-role-${var.compute_name}"
   assume_role_policy = "${file("${path.module}/assets/iam/assume-role.json")}"
 }
 
@@ -22,8 +21,8 @@ data "template_file" "compute_policy" {
 
 # Compute Policy IAM Policy
 resource "aws_iam_policy" "compute" {
-  name        = "${var.environment}-compute"
-  description = "IAM Policy for Compute nodes in ${var.environment} environment"
+  name        = "${var.environment}-${var.compute_name}-compute"
+  description = "IAM Policy for Compute nodes (${var.compute_name}) in ${var.environment} environment"
   policy      = "${data.template_file.compute_policy.rendered}"
 }
 
