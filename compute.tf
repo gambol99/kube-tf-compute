@@ -4,7 +4,7 @@
 
 ## Instance Profile
 resource "aws_iam_instance_profile" "compute" {
-  name  = "${var.environment}-compute"
+  name  = "${var.environment}-compute-${var.compute}"
   roles = [ "${aws_iam_role.compute.name}" ]
 }
 
