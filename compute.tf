@@ -72,11 +72,11 @@ resource "aws_autoscaling_group" "compute" {
   min_size                  = "${var.compute_asg_min}"
   name                      = "${var.environment}-compute-asg-${var.compute_name}"
   termination_policies      = [ "OldestInstance", "Default" ]
-  vpc_zone_identifier       = [ "${var.compute_subnets}" ]
+  vpc_zone_identifier       = [ "${values(var.compute_subnets)}" ]
 
   tag {
     key                 = "Name"
-    value               = "${var.environment}-compute-${var.compute_name}"
+    value               = "${var.environment}-compute"
     propagate_at_launch = true
   }
 
