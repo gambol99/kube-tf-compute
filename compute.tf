@@ -61,6 +61,12 @@ resource "aws_launch_configuration" "compute" {
   }
 }
 
+# Placement Group - try and keep compute together for speed
+resource "aws_placement_group" "compute" {
+  name     = "${var.environment}-compute-placement-${var.compute_name}"
+  strategy = "cluster"
+}
+
 # AutoScaling Group
 resource "aws_autoscaling_group" "compute" {
   depends_on                = [ "aws_launch_configuration.compute" ]
@@ -73,6 +79,7 @@ resource "aws_autoscaling_group" "compute" {
   max_size                  = "${var.compute_asg_max}"
   min_size                  = "${var.compute_asg_min}"
   name                      = "${var.environment}-compute-asg-${var.compute_name}"
+  placement_group           = "${aws_placement_group.compute.id}"
   termination_policies      = [ "OldestInstance", "Default" ]
   vpc_zone_identifier       = [ "${values(var.compute_subnets)}" ]
 
@@ -106,3 +113,4 @@ resource "aws_autoscaling_group" "compute" {
     propagate_at_launch = true
   }
 }
+
