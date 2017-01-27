@@ -153,7 +153,6 @@ coreos:
       ExecStart=/usr/lib/coreos/kubelet-wrapper \
         --address=0.0.0.0 \
         --allow-privileged=true \
-        --api-servers={{ .kubeapi_dns }} \
         --cloud-config=/etc/kubernetes/cloud.cfg \
         --cloud-provider=aws \
         --cluster-dns=10.200.0.10 \
@@ -174,6 +173,7 @@ coreos:
         --pod-manifest-path=/etc/kubernetes/manifests \
         --rkt-path=/usr/bin/rkt \
         --rkt-stage1-image=coreos.com/rkt/stage1-coreos \
+        --require-kubeconfig=true \
         --system-reserved=cpu=50m,memory=100Mi
 write_files:
 - path: /etc/kmsctl

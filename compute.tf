@@ -63,6 +63,8 @@ resource "aws_launch_configuration" "compute" {
 
 # AutoScaling Group
 resource "aws_autoscaling_group" "compute" {
+  depends_on                = [ "aws_launch_configuration.compute" ]
+
   default_cooldown          = "${var.compute_asg_grace_period}"
   force_delete              = true
   health_check_grace_period = 10
